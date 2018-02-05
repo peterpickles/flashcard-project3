@@ -57,6 +57,7 @@ class Dashboard extends Component {
             }
         }).then(response => {
             console.log('updated currentdeck',currentDeck)
+            // this.setState({ allDecks: decks });
             // this.setState({ display: this.allDecks()})
         });
     }

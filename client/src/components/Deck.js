@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import Cards from './Cards.js';
-import { Redirect } from 'react-router-dom';
-import axios from 'axios';
+// import Cards from './Cards.js';
+// import { Redirect } from 'react-router-dom';
+// import axios from 'axios';
 import { Button } from 'react-bootstrap';
 
 class Deck extends Component {

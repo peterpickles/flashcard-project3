@@ -26,6 +26,7 @@ class CreateCard extends Component {
             this.props.addNewCard(this.props.deck.name, this.state.cardQuestion, this.state.cardAnswer);
         }).catch(err => {
             console.log('what happened?', err);
+            
         })
 
     }

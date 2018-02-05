@@ -10,7 +10,7 @@ import Details from './components/Details.js';
 import Deck from './components/Deck.js';
 import Cards from './components/Cards.js';
 import Flash from './layout/Flash.js';
-import Footer from './layout/Footer.js';
+// import Footer from './layout/Footer.js';
 import Welcome from './WelcomePage.js';
 import Nav from './layout/Nav.js';
 import Login from './auth/Login.js';
