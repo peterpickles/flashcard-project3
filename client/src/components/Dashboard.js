@@ -61,6 +61,11 @@ class Dashboard extends Component {
             // this.setState({ display: this.allDecks()})
         });
     }
+    handleQuizClick = (e) =>{
+        e.preventDefault();        
+        this.props.showQuiz(this.props.user.decks[e.target.id])
+
+    }
     handleCardDeleteClick = (e) => {
         e.preventDefault();
 
@@ -121,7 +126,9 @@ allDecks = () =>{
                 <h2 className="deck-name"> Deck: {deck.name} </h2>
                 {/* add color bar for far right edge: eventually tags for organizing */}
                 <br />
-                <Button bsStyle='info' onClick={event => this.handleViewDeckClick(event)}>View Deck</Button>
+                <Button bsStyle='info' onClick={event => this.handleViewDeckClick(event)} id={index}>View Deck</Button>
+                <Button bsStyle='info' onClick={e => this.handleQuizClick(e)} id={index}>QUIZ MODE</Button>
+                
                 <Button bsStyle='danger' onClick={e => this.handleDeckDeleteClick(e)}>Delete</Button>
             </div>
         

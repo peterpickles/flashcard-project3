@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-// import { Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 class CreateDeck extends Component {
     constructor(props) {
@@ -31,7 +31,6 @@ class CreateDeck extends Component {
         return (
             <div>
                 <form onSubmit={this.handleNewDeckSubmit}>
-
                     <input name="name" placeholder="Enter Deck Name here" value={this.state.deckName} onChange={this.handleDeckNameChange} required></input>
                     <button className="btn btn-secondary" type="submit"> + </button>
 

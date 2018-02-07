@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import './App.css';
 import axios from 'axios';
 import Dashboard from './components/Dashboard.js';
@@ -17,15 +17,26 @@ import Login from './auth/Login.js';
 import Profile from './Profile.js';
 import Signup from './auth/Signup.js';
 
+
 class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-      user: {}
+      user: {},
+      currentQuiz: false,
+      currentDeck:{}
     }
+    this.showQuiz=this.showQuiz.bind(this);
   }
   componentDidMount = () => {
     this.getUser();
+  }
+  showQuiz = (deck) => {
+    console.log('deck sent from quiz', deck);
+    this.setState({
+      currentQuiz: true,
+      currentDeck: deck
+    })
   }
 
   getUser = () => {
@@ -59,7 +70,6 @@ class App extends Component {
       })
     }
   }
-
   setFlash = (t, msg) => {
     this.setState({
       flash: msg,
@@ -73,37 +83,49 @@ class App extends Component {
       flashType: ''
     });
   }
+
   render() {
     console.log('#####', this.state);
-    return (
-      <div className="App">
-        <Router>
+      if(this.state.currentQuiz){
+        return (
           <div>
-            <Nav user={this.state.user} updateUser={this.getUser} />
-            <div className="space">
-              <Flash flashType={this.state.flashType} flash={this.state.flash} setFlash={this.setFlash} cancelFlash={this.cancelFlash} />
-              <Route exact path="/" component={
-                () => (<Welcome user={this.state.user} setFlash={this.setFlash} updateUser={this.getUser} />)} />
-              <Route path="/login" component={
-                () => (<Login user={this.state.user} setFlash={this.setFlash} updateUser={this.getUser} />)} />
-              <Route path="/signup" component={
-                () => (<Signup user={this.state.user} setFlash={this.setFlash} updateUser={this.getUser} />)} />
-              <Route path="/profile" component={
-                () => (<Profile user={this.state.user} setFlash={this.setFlash} />)} />
-              <Route path="/Dashboard" component={
-                () => (<Dashboard user = {this.state.user} setFlash={this.setFlash} updateUser={this.getUser} />)} />
-              <Route path="/Quiz" component={Quiz} />
-              <Route path="/Notecard" component={Notecard} />
-              <Route path="/Details" component={Details} />
-              <Route path="/Deck" component={Deck} />
-              <Route path="/CreateDeck" component={
-                () => (<CreateDeck user={this.state.user} setFlash={this.setFlash} updateUser={this.getUser} />)} />
-              <Route path="/Cards" component={Cards} />
-            </div>
+            <Quiz user={this.state.user} currentDeck={this.state.currentDeck} />
           </div>
-        </Router>
-      </div>
-    );
+          )
+      }
+      else{
+        return(
+          <div className="App">
+            <Router>
+              <div>
+                <Nav user={this.state.user} updateUser={this.getUser} />
+                <div className="space">
+                  <Flash flashType={this.state.flashType} flash={this.state.flash} setFlash={this.setFlash} cancelFlash={this.cancelFlash} />
+                  <Route exact path="/" component={
+                    () => (<Welcome user={this.state.user} setFlash={this.setFlash} updateUser={this.getUser} />)} />
+                  <Route path="/login" component={
+                    () => (<Login user={this.state.user} setFlash={this.setFlash} updateUser={this.getUser} />)} />
+                  <Route path="/signup" component={
+                    () => (<Signup user={this.state.user} setFlash={this.setFlash} updateUser={this.getUser} />)} />
+                  <Route path="/profile" component={
+                    () => (<Profile user={this.state.user} setFlash={this.setFlash} />)} />
+                  <Route path="/Dashboard" component={
+                    () => (<Dashboard user = {this.state.user} setFlash={this.setFlash} showQuiz={this.showQuiz} updateUser={this.getUser} />)} />
+                  <Route path="/Quiz" component={
+                    () => (<Quiz user={this.state.user} currentDeck={this.state.currentDeck} />)} />
+
+                  <Route path="/Notecard" component={Notecard} />
+                  <Route path="/Details" component={Details} />
+                  <Route path="/Deck" component={Deck} />
+                  <Route path="/CreateDeck" component={
+                    () => (<CreateDeck user={this.state.user} setFlash={this.setFlash} updateUser={this.getUser} />)} />
+                  <Route path="/Cards" component={Cards} />
+                </div>
+              </div>
+            </Router>
+          </div>
+        );
+    }
   }
 }
 

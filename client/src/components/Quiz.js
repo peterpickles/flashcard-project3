@@ -1,14 +1,16 @@
-import React, {Component} from 'react';
-import Notecard from './Notecard.js';
+import React, { Component } from 'react';
+
+
 
 class Quiz extends Component {
-    render () {
+
+    render() {
+        console.log('this is user', this.props)
         return (
-        
-            <div>Quiz Mode
-            <Notecard />
-            </div>)
-        
+            <h2>
+                hello
+            </h2>
+        )
     }
 }
 
