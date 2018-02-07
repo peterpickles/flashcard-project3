@@ -66,29 +66,7 @@ class Dashboard extends Component {
         this.props.showQuiz(this.props.user.decks[e.target.id])
 
     }
-    handleCardDeleteClick = (e) => {
-        e.preventDefault();
 
-        console.log("CLICKED");
-        // console.log('new all decks', currentDeck);
-        // let dataKey = e.target.parentNode;
-        // let cardIndex = dataKey.getAttribute('data-key');
-        // let currentCard = this.state.cards;
-        // console.log('this is currentDeck',currentCard);
-
-        // let decks = this.state.allDecks;
-        // this.setState({ allDecks: decks });
-        // console.log('this is currentDeck',currentDeck);
-        // console.log('Card ID ######',currentDeck.cards._id);
-        // axios.delete('/component/askForLessCards', {
-        //     data: {
-        //         cardId: currentDeck.cards._id,
-        //         userId: this.props.user.id
-        //     }
-        // }).then(response => {
-        //     console.log('updated currentdeck', currentDeck)
-        // });
-    }
 handleEditCardClick (event) {
     console.log("edit card clicked");
 }
