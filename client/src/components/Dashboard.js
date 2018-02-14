@@ -20,7 +20,6 @@ class Dashboard extends Component {
         // this bindings
         this.handleViewDeckClick = this.handleViewDeckClick.bind(this);
         this.handleDeckDeleteClick=this.handleDeckDeleteClick.bind(this);
-        this.handleCardDeleteClick = this.handleCardDeleteClick.bind(this);
     } //close constructor
 
     componentDidMount = () => {
