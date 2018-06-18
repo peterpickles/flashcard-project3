@@ -10,6 +10,7 @@ Never forget anything! Organize your much needed study materials into virtual fl
 	* Key modules:
 	 * Axios
 	 * React-router-dom
+	 * JWT - user sessions and allows users to stay connected
 	* CSS Framework: React-Bootstrap
 * MongoDB with Mongoose
 
